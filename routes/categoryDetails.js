@@ -1,19 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../firebase");
+const { db } = require("../firebase");
 
-// GET /api/category-details/:id
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
+router.get("/:categoryId", async (req, res) => {
+  const { categoryId } = req.params;
   try {
-    const doc = await db.collection("categories").doc(id).get();
-    if (!doc.exists) {
-      return res.status(404).json({ error: "Category not found" });
+    const categoryDoc = await db.collection("categories").doc(categoryId).get();
+    if (!categoryDoc.exists) {
+      return res.status(404).send("Category not found");
     }
-    res.json({ id: doc.id, ...doc.data() });
+    res.status(200).json(categoryDoc.data());
   } catch (error) {
-    console.error("Error getting category:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Error getting category details:", error);
+    res.status(500).send("Error getting category details");
   }
 });
 

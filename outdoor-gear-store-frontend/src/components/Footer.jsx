@@ -14,6 +14,10 @@ const Footer = () => {
         position: 'fixed',
         bottom: 0,
         width: '100%',
+        zIndex: 1000, // Makes sure it's always on top
+        '@media (max-width: 600px)': {
+          position: 'relative', // Footer becomes part of the content flow on small screens
+        },
       }}
     >
       <Typography variant="body2" color="textSecondary">

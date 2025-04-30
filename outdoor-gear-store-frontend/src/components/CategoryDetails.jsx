@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { Container, Typography, CircularProgress } from '@mui/material';
+import api from '../services/api';
 
 const CategoryDetails = () => {
   const { id } = useParams();
@@ -9,8 +9,7 @@ const CategoryDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3002/api/categories/${id}`)
+    api.get(`/categories/${id}`)
       .then((response) => {
         setCategory(response.data);
         setLoading(false);

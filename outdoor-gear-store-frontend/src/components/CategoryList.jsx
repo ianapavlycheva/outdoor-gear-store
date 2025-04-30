@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Card, CardContent, CardMedia, Button, Typography } from '@mui/material';
-import axios from 'axios';
+import api from '../services/api';
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002/api/categories')
+    api.get('/categories')
       .then((response) => {
         setCategories(response.data);
       })
@@ -21,7 +21,6 @@ const CategoryList = () => {
       {categories.map((cat) => (
         <Grid item xs={12} sm={6} md={4} key={cat.id}>
           <Card>
-            {/* Картинка, если будет нужна */}
             {cat.imageURL && (
               <CardMedia
                 component="img"
