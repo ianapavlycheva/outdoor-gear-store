@@ -4,6 +4,7 @@ import { Container, Typography } from '@mui/material';
 import CategoryList from './components/CategoryList';
 import CategoryDetails from './components/CategoryDetails';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<CategoryList />} />
           <Route path="/category/:id" element={<CategoryDetails />} />
         </Routes>
+                <Footer />
       </Container>
     </Router>
   );
