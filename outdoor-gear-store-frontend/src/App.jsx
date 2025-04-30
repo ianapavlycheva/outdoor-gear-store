@@ -4,12 +4,13 @@ import { Container, Typography } from '@mui/material';
 import CategoryList from './components/CategoryList';
 import CategoryDetails from './components/CategoryDetails';
 import Header from './components/Header';
+import Subscription from './components/Subscription';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
-            <Header />
+      <Header />
       <Container>
         <Typography variant="h3" align="center" gutterBottom>
           Outdoor Gear Store
@@ -18,8 +19,9 @@ function App() {
           <Route path="/" element={<CategoryList />} />
           <Route path="/category/:id" element={<CategoryDetails />} />
         </Routes>
-                <Footer />
       </Container>
+      <Subscription />
+      <Footer />
     </Router>
   );
 }
